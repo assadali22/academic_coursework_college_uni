@@ -4,7 +4,7 @@
 //and store them in an array. One array for number of votes, and    -
 //one array for the name.											-
 //Step 2: Find the total number of votes.							-
-//Step 3: Use the selection sort algorithim to sort the array of	-
+//Step 3: Use the selection sort algorithm to sort the array of	-
 //the number of votes from greatest to least with respect to each	-
 //candidate.														-
 //Step 4: Display the sorted data in a table-like format, with the	-
