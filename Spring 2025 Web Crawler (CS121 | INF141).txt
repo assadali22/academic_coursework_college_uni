@@ -1,0 +1,3 @@
+Link to group project repository: https://github.com/daniyal-0/webcrawler
+
+Learned how a web crawler works and how to filter / blacklist certain pages in Python using regular expressions and the keyword "in".
