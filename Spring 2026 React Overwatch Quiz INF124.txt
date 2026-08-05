@@ -1,0 +1,3 @@
+Link to repository: https://github.com/carsonmdd/inf-124-overwatch-quiz
+
+Description: Learned how to use states in React and applied responsive design to the web pages using Tailwind CSS. Designed profile pages and defined classes such as achievements, users, and questions.
