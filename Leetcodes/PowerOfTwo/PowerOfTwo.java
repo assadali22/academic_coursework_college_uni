@@ -1,4 +1,5 @@
 /*
+Last Updated 8/29/2026
 Problem 231: Power of Two Leetcode (SOLVED)
 Given an integer n, return true if it is a power of two. Otherwise, return false.
 
