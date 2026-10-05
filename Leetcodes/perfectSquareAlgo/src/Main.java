@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.math.*;
 
-//SOLVED!
+//SOLVED! completed 9/13/2025
 public class Main {
     public static void main(String[] args) {
         System.out.println("Enter an int to show number of least perfect squares: ");
