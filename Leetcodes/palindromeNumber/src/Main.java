@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+//completed 9/15/2025
 //solved in about 17 minutes no interruptions
 public class Main {
     public static void main(String[] args) {
