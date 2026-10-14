@@ -2,6 +2,7 @@ import java.util.Hashtable;
 import java.util.Set;
 
 //completed 9/13/2025
+//updated 10/14/2026
 //MAJORITY ELEMENT SOLVED!!
 public class Main {
     public static void main(String[] args)
@@ -24,18 +25,18 @@ public class Main {
     public static int majorityElement(int[] nums, int startIndex, int endIndex)
     {
         if (startIndex == endIndex)
-        {
-            return startIndex;
-        }
+            return nums[startIndex]; //return the number, not the index
+        
         //if (endIndex - startIndex + 1 == 1 || endIndex - startIndex + 1 == 2) return -1; //wrong
         int left;
         int right;
         int middle = (startIndex + endIndex) / 2;
 
+        //divide and conquer, check majority element in left and right half
         left = majorityElement(nums, startIndex, middle);
         right = majorityElement(nums, middle + 1, endIndex);
 
-        //make dictionary for left and right half
+        //make dictionary for left and right half (key is the number, value is the frequency of that number)
         Hashtable<Integer, Integer> leftDict = new Hashtable<>();
         for (int i = 0; i <= middle; i++) //count the missing element at middle, need <=
         {
@@ -69,7 +70,7 @@ public class Main {
         leftDict.forEach((k, v) -> rightDict.merge(k, v, (oldVal, newVal) -> oldVal + newVal));
 
         //find most frequent one, check if it is greater than n / 2, return number if majority else -1
-        Set<Integer> s = rightDict.keySet(); //get the keys
+        Set<Integer> s = rightDict.keySet(); //get the keys (which are the numbers in the array, without duplicates)
         int mostFreq = -1;
         int keyToReturn = -1;
         for (Integer key : s) //go through each key
