@@ -3,7 +3,10 @@ import java.util.Scanner;
 import java.math.*;
 
 //not solved.. "completed" 9/13/2025
-//last modified 10/21/2026, 553 out of 589 test cases passed, with an annoying test case of 70 blocking success
+//last modified 10/21/2026, 553 out of 589 test cases passed, 
+//with an annoying test case of 70 blocking success (previous implementation with 1D memo)
+
+//last modified 10/22/2026, major logic modification and accepted on leetcode 10/22/2026
 public class Main {
     public static void main(String[] args) {
         System.out.println("Enter an int to show number of least perfect squares: ");
@@ -25,20 +28,24 @@ public class Main {
             i++;
         }
 
-        //ITERATE n + 1 TIMES, the last number wasn't even filled with j < n condition
-        int[] memo = new int[n + 1];
-        for (int j = 0; j < n + 1; j++)
-            memo[j] = 10001;
+        //2D memo for amount and corresponding index from perfect squares array
+        int[][] memo = new int[n + 1][squares.size()];
+        for (int k = 0; k < n + 1; k++)
+        {
+            memo[k][0] = k;  //for any amount, given only 1s, its just the amount itself
+            for (int j = 1; j < squares.size(); j++)
+            {
+                memo[k][j] = 10001;
+            }
+        }
         
-        memo[0] = 0;
-        memo[1] = 1;
         return findLeastSquares(n, temp, memo, temp.size() - 1);
     }
 
     
-    public static int findLeastSquares(int a, ArrayList<Integer> squares, int[] memo, int coinIndex)
+    public static int findLeastSquares(int a, ArrayList<Integer> squares, int[][] memo, int coinIndex)
     {
-        if (memo[a] != 10001) return memo[a]; //a solution to subproblem is already filled
+        if (memo[a][coinIndex] != 10001) return memo[a][coinIndex]; //a solution to subproblem is already filled
         if (coinIndex == 0) return a; //rest will use 1s
 
         //we can say, worst case to make the amount is a coins, consisting of 1s
@@ -52,15 +59,20 @@ public class Main {
         
 
         skip = findLeastSquares(a, squares, memo, coinIndex - 1); //skip and move to the next square number
-        memo[a] = Math.min(skip, 1 + keep);
-        return memo[a];
+        memo[a][coinIndex] = Math.min(skip, 1 + keep);
+        return memo[a][coinIndex];
     }
 
 }
-//ugh test cases other than 12 and 13 won't even work, it gives wrong number
+
 //fix: set keep equal to amount (counter-intuitive, thought skip would be the amount, but at least it works)
 
 /*
+#279 Perfect Squares Leetcode
+Given an integer n, return the least number of perfect squares that sum to n.
+A perfect square is an integer that is the square of an integer (aka the product of some integer with itself)
+Ex: 1, 4, 9, 16, 25, 36
+
 Example 1:
 
 Input: n = 12
