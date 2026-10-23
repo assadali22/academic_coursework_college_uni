@@ -1,6 +1,7 @@
 //submitted 10/22/2026, accepted. Similar to my Main.java when
 //I did it in my IDE where I passed an Integer type instead of a normal int.
-//logic is basically the same, negative number check is done in the function in this file.
+//logic is basically the same, but negative number check 
+//and string conversion is done in the function in this file instead of Main.
 
 class Solution {
     public boolean isPalindrome(int x) {
